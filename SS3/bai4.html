@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let totalBookChecked = 0;
+        let lostBook = 0;
+        let outOfStock = 0;
+        let inventoryBooks = 0 ; 
+        let manyInverntoryBook = 0 ; 
+        while (true) {
+            let answer = prompt("Tiếp tục kiểm kê sách tiếp theo? (có/không)");
+
+            if (answer ==="không") {
+                console.log("Kết thúc chương trình !!!");
+                break;
+
+            }
+            if (answer != "có") {
+                console.log("Không hợp lệ vui lòng nhập lại!!!");
+                continue;
+
+            }
+            let bookCode = prompt("Nhập mã sách:");
+            if (bookCode == "") {
+                console.log("Không được để trống mã sách!!!");
+
+            }
+            let nameBook = prompt("Nhập tên sách");
+            let realQuantityBook = parseInt(prompt("Nhập số lượng thực tế còn trong kho:"));
+            let status = parseInt(prompt("Tình trạng sách:\n" +
+                "1 - Bình thường\n" +
+                "2 - Mất")) ;
+            totalBookChecked ++; 
+            if(status =="Mất"){
+                lostBook ;
+            }else if(status =="Bình thường" && realQuantityBook==0){
+                outOfStock ++ ;
+            }else if(status =="Bình thường" && realQuantityBook>=10){
+                manyInverntoryBook++ ;
+            }else if(status =="Bình thường" && (realQuantityBook>1 && realQuantityBook<9)){
+                inventoryBooks ++ ;
+            }else{
+                continue ;
+            }
+
+        }
+        console.log("====Báo cáo ====");
+        console.log("Tổng số sách kiểm kê :"+totalBookChecked);
+        console.log("Số sách mất:"+lostBook);
+        console.log("Số sách hết hàng:"+outOfStock);
+        
+        
+        
+        
+    </script>
+</body>
+
+</html>

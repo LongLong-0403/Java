@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let successCount = 0 ; 
+        let failCount = 0 ;
+
+        while(true){
+            let answer = prompt("Có yêu cầu gia hạn mới không? (có/không)"); 
+
+            if(answer === "không"){
+                console.log("Kết thúc chương trình");
+                
+                break ; 
+            }
+            if(answer!== "có"){
+                console.log("vui lòng nhập lại");
+                continue ;
+                
+            }
+            let readerName = prompt("Tên bạn đọc:"); 
+            let bookName = prompt("Tên sách:"); 
+            let numberOfDayBorrow = parseInt(prompt("Số ngày mượn hiện tại:")); 
+            let extenDays = parseInt(prompt("Số ngày muốn gia hạn thêm :")); 
+
+            let totalDays = numberOfDayBorrow + extenDays ;
+
+            if(totalDays>60){
+                console.log("Không được gia hạn: Tổng thời gian vượt quá 60 ngày tối đa");
+                failCount++ ; 
+                
+            }else if(numberOfDayBorrow >45){
+                console.log("Không được gia hạn: Đã mượn quá lâu (>45 ngày)");
+                failCount ++;
+                
+            } else{
+                console.log("Gia hạn thành công");
+                successCount ++ ;
+                
+            }  
+        }
+        console.log("-----Thống kê ca làm việc ----");
+        console.log("số lần gia hạn thành công :"+successCount);
+        console.log("số lần gia hạn không thành công:"+failCount);
+        
+        
+        
+    </script>
+</body>
+</html>

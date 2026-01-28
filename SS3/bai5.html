@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         let totalRequestHandle = 0 ; 
+         let successRequest = 0 ; 
+         let failRequest =  0 ; 
+         let loadingRequest = 0 ; 
+
+         while(true){
+            let answer = prompt("Có yêu cầu đặt mượn trước mới không? (có/không)") ; 
+            if(answer =="không"){
+                console.log("Kết thúc chương trình!!!");
+                break ;
+                
+            }
+            if(answer!="có"){
+                console.log("Không hợp lệ!!!Vui lòng nhập lại");
+                continue;
+                
+            }
+            let readerName = prompt("Tên bạn đọc:"); 
+            let codeBook = prompt("Mã sách muốn đặt trước:"); 
+            let nameBook = prompt("Tên sách :"); 
+            let waitDays = parseInt(prompt("Số ngày dự kiến chờ:")); 
+            let oder = parseInt(prompt("1 = Sinh viên bình thường\n" + "2 = Giảng viên /Nghiên cứu sinh\n" +"3 = Nhân viên thư viện /Đặc cách")) ; 
+            totalRequestHandle ++ ;
+            if(waitDays > 45){
+                console.log("Từ chối: Thời gian chờ quá lâu (>45 ngày)");
+                failRequest++;
+            }else if(oder == 3){
+                console.log("Đặt trước thành công - Ưu tiên đặc cách cao nhất");
+                successRequest ++ ;    
+            }else if(oder ==2 && waitDays<=30){
+                console.log("Đặt trước thành công - Ưu tiên giảng viên/nghiên cứu");
+                successRequest++;
+                
+            }else if(oder==1 && waitDays<=21){
+                console.log("Đặt trước thành công");
+                
+            }else {
+                console.log("Đặt trước tạm thời - Chờ xét duyệt thêm");
+                loadingRequest++;
+                
+            }
+         }
+     console.log("====Báo cáo chi tiết ====");
+    console.log("Tổng số yêu cầu đã được xử lý:   "+totalRequestHandle);
+    console.log("Yêu cầu đặt trước thành công:  "+successRequest);
+    console.log("Yêu cầu bị từ chối:  " +failRequest);
+    console.log("Yêu cầu chờ xét duyệt:   khôn"+loadingRequest);
+    
+    
+    
+    
+    </script>
+</body>
+</html>
