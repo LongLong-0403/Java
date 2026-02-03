@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [];
+        let n;
+
+        do {
+            n = parseInt(prompt("Nhập số lượng phần tử"));
+            if (n <= 0 || isNaN(n)) {
+                alert("Không được để mảng rỗng");
+            }
+        } while (n <= 0 || isNaN(n));
+
+        
+        for (let i = 0; i < n; i++) {
+            let value = prompt("Nhập phần tử thứ " + (i + 1));
+
+            
+            if (value === "null") {
+                arr[i] = null;
+            } else if (value === "undefined") {
+                arr[i] = undefined;
+            } else if (value === "false") {
+                arr[i] = false;
+            } else if (value === "") {
+                arr[i] = "";
+            } else if (!isNaN(value)) {
+                arr[i] = Number(value);
+            } else {
+                arr[i] = value;
+            }
+        }
+
+        
+        let newArr = arr.filter(Boolean);
+
+        console.log("Mảng ban đầu:", arr);
+        console.log("Mảng sau khi loại bỏ falsy:", newArr);
+    </script>
+</body>
+</html>
